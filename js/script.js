@@ -1,11 +1,18 @@
+//البحث الفعلي
+document.querySelector(".search-box").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        let query = this.value.toLowerCase();
+        window.location.href = "search-results.html?q=" + query;
+    }
+});
 function navigateTo(page) {
     window.location.href = page;
 }
+//الترجمة
 
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({pageLanguage: 'ar', includedLanguages: 'en,ar'}, 'google_translate_element');
 }
-
 document.addEventListener("DOMContentLoaded", function () {
     // التحقق من وجود زر تغيير اللغة أولاً
     const toggleLanguageButton = document.getElementById("toggle-language");
@@ -68,27 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".book-slider"); 
-    const prevButton = document.querySelector(".prev-btn"); 
-    if (!slider || !prevButton) return; 
-    let scrollAmount = 0; 
-
-    prevButton.addEventListener("click", function () {
-        let itemWidth = document.querySelector(".book")?.offsetWidth + 20 || 200; 
-        scrollAmount -= itemWidth; 
-
-        if (scrollAmount < 0) {
-            scrollAmount = 0; 
-        }
-
-        slider.scrollTo({
-            left: scrollAmount,
-            behavior: "smooth",
-        });
-    });
-});
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const scrollTopButton = document.getElementById("scrollTop");
@@ -111,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const footer = document.querySelector(".footer");
     const socialIcons = document.querySelectorAll(".social-icon");
-    const scrollTopButton = document.getElementById("scrollTop");
 
     // ✅ تأثير ظهور الفوتر عند التمرير (Fade-in)
     function checkFooterVisibility() {
@@ -138,26 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.style.boxShadow = "none";
         });
     });
-
-    // ✅ زر العودة للأعلى يظهر عند النزول
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {
-            scrollTopButton.style.display = "block";
-            scrollTopButton.classList.add("bounce");
-        } else {
-            scrollTopButton.style.display = "none";
-            scrollTopButton.classList.remove("bounce");
-        }
-    });
-
-    // ✅ تأثير انزلاقي عند الضغط على زر العودة للأعلى
-    scrollTopButton.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    });
-
     // ✅ تأثير إضاءة تدريجية على الروابط عند تمرير الفأرة
     const footerLinks = document.querySelectorAll(".footer-links ul li a");
     footerLinks.forEach((link) => {
@@ -172,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 
 
