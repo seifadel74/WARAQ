@@ -137,12 +137,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
-
-
-
-
-
-
-
