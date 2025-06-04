@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>قائمة الكتب - WARAQ</title>
+  <!-- نفس الستايل من books.html -->
+  <style>
+    /* ... */
+  </style>
+</head>
+<body>
+  <!-- نفس النافبار من books.html -->
+  
+  <div class="books-container" id="books-list">
+    <!-- سيتم ملؤه بالجافاسكريبت -->
+  </div>
+
+  <!-- نفس الفوتر من books.html -->
+
+  <script>
+    // جلب نوع الكتب من URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookType = urlParams.get('type');
+    
+    // عناوين الأقسام
+    const typeTitles = {
+      'self-development': 'تطوير الذات',
+      'science': 'الكتب العلمية',
+      'history': 'الكتب التاريخية',
+      'religion': 'الكتب الدينية',
+      'kids': 'كتب الأطفال'
+    };
+    
+    // عرض الكتب حسب النوع
+    async function displayBooks() {
+      const books = await fetchBooksByType(bookType);
+      const container = document.getElementById('books-list');
+      
+      if (books.length === 0) {
+        container.innerHTML = '<p>لا توجد كتب متاحة في هذا القسم حالياً</p>';
+        return;
+      }
+      
+      let html = `<h1>${typeTitles[bookType] || bookType}</h1>`;
+      books.forEach(book => {
+        html += `
+          <div class="book-card">
+            <img src="${book.image_url || 'images/default-book.jpg'}" alt="${book.title}">
+            <h2>${book.title}</h2>
+            <p>المؤلف: ${book.author}</p>
+            <p>سنة النشر: ${book.published_year}</p>
+            <p>التقييم: ${book.ratings_avg_rating || 'لا يوجد تقييمات بعد'}</p>
+            <button onclick="viewBookDetails(${book.id})">عرض التفاصيل</button>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+    
+    // عرض تفاصيل الكتاب
+    function viewBookDetails(bookId) {
+      window.location.href = `book-details.html?id=${bookId}`;
+    }
+    
+    // عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', displayBooks);
+  </script>
+</body>
+</html>

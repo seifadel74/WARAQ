@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARAQ - الرئيسية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="search-container">
+            <img src="search-icon.png" class="search-icon" alt="Search">
+            <input type="text" class="search-box" placeholder="ابحث عن كتاب أو مؤلف">
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">الرئيسية</a>
+            <a href="books.html" class="nav-item">أقسام الكتب</a>
+            <a href="novels.html" class="nav-item">الروايات</a>
+            <a href="stories.html" class="nav-item">القصص</a>
+            <a href="authors.html" class="nav-item">المؤلفون</a>
+            <a href="references.html" class="nav-item">المراجع</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="login.html" class="login-btn">تسجيل الدخول</a>
+            <a href="signup.html" class="signup-btn">إنشاء حساب</a>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.png" class="logo" alt="WARAQ Logo">
+        </div>
+    </header>
+
+    <main>
+        <section class="books-section">
+            <h2 class="section-title">أحدث الإصدارات</h2>
+            <div id="latest-books" class="books-container"></div>
+        </section>
+        <section class="books-section">
+            <h2 class="section-title">أشهر الكتب</h2>
+            <div id="popular-books" class="books-container"></div>
+        </section>
+        <section class="books-section">
+            <h2 class="section-title">الأكثر قراءة</h2>
+            <div id="most-read-books" class="books-container"></div>
+        </section>
+    </main>
+
+    <button class="faq-button">الأسئلة الشائعة</button>
+    <div class="faq-card">
+        <div class="faq-header">
+            <h2>الأسئلة الشائعة</h2>
+            <span class="close-btn">×</span>
+        </div>
+        <div class="faq-content">
+            <div class="faq-item">
+                <h3>كيف أبحث عن كتاب معين؟</h3>
+                <p>يمكنك استخدام شريط البحث في أعلى الصفحة للبحث عن اسم الكتاب أو اسم المؤلف.</p>
+            </div>
+            <div class="faq-item">
+                <h3>هل يمكنني تحميل الكتب مجانًا؟</h3>
+                <p>نعم، بعض الكتب متاحة مجانًا، بينما تتطلب كتب أخرى اشتراكًا للوصول إليها.</p>
+            </div>
+            <div class="faq-item">
+                <h3>هل يمكنني مزامنة قراءتي بين الأجهزة المختلفة؟</h3>
+                <p>نعم، بمجرد تسجيل الدخول بحسابك، ستتمكن من متابعة القراءة من حيث توقفت على أي جهاز.</p>
+            </div>
+            <div class="faq-item">
+                <h3>ماذا أفعل إذا واجهت مشكلة في تحميل كتاب؟</h3>
+                <p>حاول تحديث الصفحة أو تجربة متصفح آخر، وإذا استمرت المشكلة، يرجى التواصل مع فريق الدعم الفني.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="footer-title">WARAQ</h2>
+                <p>اكتشف آلاف الكتب الإلكترونية واستمتع بتجربة قراءة ممتعة.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="books.html">الكتب</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>تواصل معنا</h3>
+                <p><i class="fas fa-envelope"></i> support@waraq.com</p>
+                <p><i class="fas fa-phone"></i> 0000000</p>
+                <p><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2025 | <span>WARAQ</span></p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>

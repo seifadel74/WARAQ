@@ -1,0 +1,77 @@
+<script>
+// دالة تسجيل الدخول
+async function loginUser(email, password) {
+  try {
+    const response = await fetch('http://localhost:8000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok) {
+      // حفظ التوكن في localStorage
+      localStorage.setItem('auth_token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      
+      // توجيه المستخدم للصفحة الرئيسية
+      window.location.href = 'index.html';
+    } else {
+      alert(data.message || 'خطأ في تسجيل الدخول');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('حدث خطأ أثناء الاتصال بالخادم');
+  }
+}
+
+// تعديل الفورم الرئيسي
+document.querySelector('.form-box form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const email = this.elements.email.value;
+  const password = this.elements.password.value;
+  
+  loginUser(email, password);
+});
+
+// دالة نسيان كلمة المرور
+async function forgotPassword(email) {
+  try {
+    const response = await fetch('http://localhost:8000/api/forgot-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok) {
+      alert(data.message);
+      document.getElementById('forgotPasswordModal').style.display = 'none';
+    } else {
+      alert(data.message || 'حدث خطأ أثناء إرسال طلب استعادة كلمة المرور');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('حدث خطأ أثناء الاتصال بالخادم');
+  }
+}
+
+// تعديل فورم نسيان كلمة المرور
+document.getElementById('forgotPasswordForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = this.elements.email.value;
+  forgotPassword(email);
+});
+</script>
